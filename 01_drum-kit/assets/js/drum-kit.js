@@ -1,15 +1,11 @@
 (function() {
 
   function DrumKit() {
-
-  }
-
-  DrumKit.prototype.handleInputs = function(event) {
-
+    this.panel = document.querySelector('div.beat-inputs');
   }
 
   DrumKit.prototype.getCodeButton = function(code) {
-
+    return this.panel.querySelector('[key-code="' + code + '"');
   }
 
   DrumKit.prototype.getCodeSound = function(code) {
@@ -29,8 +25,13 @@
   }
 
   var drumKit = new DrumKit();
+  var inputHandler = function(event) {
+    // TODO: distinguish between keydown and keyup
+    // TODO: in case of being keyup, play the sound and add the active class to the button
+    // TODO: otherwise, remove the active class.
+  }
 
-  window.addEventListener('keydown', drumKit.handleInputs);
-  window.addEventListener('keyup', drumKit.handleInputs);
+  window.addEventListener('keydown', inputHandler);
+  window.addEventListener('keyup', inputHandler);
 
 })();
