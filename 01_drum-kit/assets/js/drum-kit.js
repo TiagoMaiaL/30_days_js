@@ -49,7 +49,9 @@
     if (event.type == 'keydown') {
       drumKit.playAudio(code);
       drumKit.activateButton(code);
-    } else if (event.type == 'keyup') {
+    }
+
+    if (event.type == 'keyup') {
       drumKit.deactivateButton(code);
     }
   }
