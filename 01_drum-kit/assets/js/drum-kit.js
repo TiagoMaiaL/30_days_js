@@ -7,38 +7,34 @@
   }
 
   DrumKit.prototype.getButton = function(code) {
-    var buttonNode = this.panel.querySelector('div[key-code="' + code + '"]');
-
-    if (buttonNode == null) {
-      throw Error('Button not found.');
-    }
-
-    return buttonNode;
+    return this.panel.querySelector('div[key-code="' + code + '"]');
   }
 
   DrumKit.prototype.getAudio = function(code) {
-    var audioNode = document.querySelector('audio[key-code="' + code + '"]');
+    return document.querySelector('audio[key-code="' + code + '"]');
+  }
 
-    if (audioNode == null) {
-      throw Error('Audio not found.');
+  DrumKit.prototype.activateButton = function(code) {
+    var button = this.getButton(code);
+
+    if (button != null) {
+      button.classList.add('beat-inputs__button--pressed');
     }
-
-    return audioNode;
   }
 
-  DrumKit.prototype.activateButton = function(buttonNode) {
-    // TODO: Write this code when the css becomes finished
-  }
+  DrumKit.prototype.deactivateButton = function(code) {
+    var button = this.getButton(code);
 
-  DrumKit.prototype.deactivateButton = function(buttonNode) {
-    // TODO: Write this code when the css becomes finished
+    if (button != null) {
+      button.classList.remove('beat-inputs__button--pressed');
+    }
   }
 
   DrumKit.prototype.playAudio = function(code) {
-    try {
+    var audio = this.getAudio(code);
+
+    if (audio != null) {
       this.getAudio(code).play();
-    } catch (error) {
-      return;
     }
   }
 
