@@ -5,11 +5,11 @@
   }
 
   DrumKit.prototype.getCodeButton = function(code) {
-    return this.panel.querySelector('[key-code="' + code + '"');
+    return this.panel.querySelector('div[key-code="' + code + '"]');
   }
 
   DrumKit.prototype.getCodeSound = function(code) {
-
+    return document.querySelector('audio[key-code="' + code + '"]');
   }
 
   DrumKit.prototype.activateButton = function(buttonNode) {
@@ -33,5 +33,4 @@
 
   window.addEventListener('keydown', inputHandler);
   window.addEventListener('keyup', inputHandler);
-
 })();
